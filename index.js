@@ -1,5 +1,6 @@
 const express = require('express')
 const multer  = require('multer')
+const cors  = require('cors')
 const fetch = require('node-fetch')
 const FormData = require('form-data')
 const qs = require('qs')
@@ -8,6 +9,8 @@ const path = require('path')
 
 const app = express()
 const upload = multer({ dest: 'captcha-files/' })
+
+app.use(cors())
 
 app.post('/', upload.single('captcha'), function (req, res, next) {
   // req.file 是 `captcha` 文件的信息
