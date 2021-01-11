@@ -17,6 +17,11 @@ app.post('/', upload.single('captcha'), function (req, res, next) {
       setTimeout(function () {
         fetchResponseById(ret.request, function (codeRet) {
           res.end(JSON.stringify(codeRet))
+          fs.unlink(path.resolve(__dirname, req.file.path), function (err) {
+            if (err) {
+              throw err;
+            }
+          })
         })
       }, 1000)
     } else {
@@ -59,6 +64,4 @@ function fetchResponseById(id, callback) {
 const server = app.listen(3005, function () {
   const host = server.address().address
   const port = server.address().port
-  
-  console.log("应用实例，访问地址为 http://localhost:" + port)
 })
