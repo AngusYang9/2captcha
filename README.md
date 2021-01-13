@@ -12,7 +12,7 @@ Request body:
 
 | Param   | Value          |
 | ------- | -------------- |
-| Captcha | 图片验证码文件 |
+| captcha | 图片验证码文件 |
 
 Response body:
 
